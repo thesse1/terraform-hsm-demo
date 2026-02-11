@@ -1,3 +1,5 @@
+variable "azure_user_id" {}
+
 resource "azurerm_key_vault" "thes_kv_germanywestcentral" {
   name                       = "thes-kv-germanywestcentr"
   location                   = "germanywestcentral"
@@ -10,7 +12,14 @@ resource "azurerm_key_vault" "thes_kv_germanywestcentral" {
     tenant_id = var.azure_tenant_id
     object_id = var.azure_object_id
 
-    key_permissions = ["Get","List","Update","Create","Import","Delete","Recover","Backup","Restore","Decrypt","Encrypt","UnwrapKey","WrapKey","Verify","Sign","Purge","Release","Rotate","GetRotationPolicy","SetRotationPolicy"]
+    key_permissions = ["Get", "List", "Update", "Create", "Import", "Delete", "Recover", "Backup", "Restore", "Decrypt", "Encrypt", "UnwrapKey", "WrapKey", "Verify", "Sign", "Purge", "Release", "Rotate", "GetRotationPolicy", "SetRotationPolicy"]
+  }
+
+  access_policy {
+    tenant_id = var.azure_tenant_id
+    object_id = var.azure_user_id
+
+    key_permissions = ["Get", "List", "Update", "Create", "Import", "Delete", "Recover", "Backup", "Restore", "Decrypt", "Encrypt", "UnwrapKey", "WrapKey", "Verify", "Sign", "Purge", "Release", "Rotate", "GetRotationPolicy", "SetRotationPolicy"]
   }
 }
 
@@ -26,6 +35,13 @@ resource "azurerm_key_vault" "thes_kv_westeurope" {
     tenant_id = var.azure_tenant_id
     object_id = var.azure_object_id
 
-    key_permissions = ["Get","List","Update","Create","Import","Delete","Recover","Backup","Restore","Decrypt","Encrypt","UnwrapKey","WrapKey","Verify","Sign","Purge","Release","Rotate","GetRotationPolicy","SetRotationPolicy"]
+    key_permissions = ["Get", "List", "Update", "Create", "Import", "Delete", "Recover", "Backup", "Restore", "Decrypt", "Encrypt", "UnwrapKey", "WrapKey", "Verify", "Sign", "Purge", "Release", "Rotate", "GetRotationPolicy", "SetRotationPolicy"]
+  }
+
+  access_policy {
+    tenant_id = var.azure_tenant_id
+    object_id = var.azure_user_id
+
+    key_permissions = ["Get", "List", "Update", "Create", "Import", "Delete", "Recover", "Backup", "Restore", "Decrypt", "Encrypt", "UnwrapKey", "WrapKey", "Verify", "Sign", "Purge", "Release", "Rotate", "GetRotationPolicy", "SetRotationPolicy"]
   }
 }
