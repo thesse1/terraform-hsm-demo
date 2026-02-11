@@ -7,15 +7,15 @@ This repository includes the Terraform configuration for setting up a demo for t
   - A key template referencing the two keystores
   - Two keys created using the key template, each one activated on both keystores
 
+In both Azure Key Vault instances, the HSM key transfer creates three keys:
+- The "EKMF-BYOK-KEK-FOR-IMPORT" key used for the BYOK mechanism
+- The two keys managed in HPCS
+
 <img width="2525" height="658" alt="image" src="https://github.com/user-attachments/assets/6c920cc1-c313-49d4-8d4e-5b28762d636a" />
 
 <img width="2511" height="530" alt="image" src="https://github.com/user-attachments/assets/63ffbbbf-c395-49af-9249-d06ba58239c9" />
 
 <img width="2512" height="521" alt="image" src="https://github.com/user-attachments/assets/0148db36-b084-418b-af87-f153ecbb4624" />
-
-In both Azure Key Vault instances, the HSM key transfer creates three keys:
-- The "EKMF-BYOK-KEK-FOR-IMPORT" key used for the BYOK mechanism
-- The two keys managed in HPCS
 
 <img width="1321" height="510" alt="image" src="https://github.com/user-attachments/assets/23a4960f-a219-4c46-8451-695c92df4e47" />
 
