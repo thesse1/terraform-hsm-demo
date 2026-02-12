@@ -45,3 +45,27 @@ resource "azurerm_key_vault" "thes_kv_westeurope" {
     key_permissions = ["Get", "List", "Update", "Create", "Import", "Delete", "Recover", "Backup", "Restore", "Decrypt", "Encrypt", "UnwrapKey", "WrapKey", "Verify", "Sign", "Purge", "Release", "Rotate", "GetRotationPolicy", "SetRotationPolicy"]
   }
 }
+
+data "azurerm_key_vault_key" "thes_key_germanywestcentral" {
+  count = 2
+  name         = "thes-key-${count.index + 1}"
+  key_vault_id = azurerm_key_vault.thes_kv_germanywestcentral.id
+
+  depends_on = [ ibm_hpcs_managed_key.managed_key ]
+}
+
+data "azurerm_key_vault_key" "thes_key_westeurope" {
+  count = 2
+  name         = "thes-key-${count.index + 1}"
+  key_vault_id = azurerm_key_vault.thes_kv_westeurope.id
+
+  depends_on = [ ibm_hpcs_managed_key.managed_key ]
+}
+
+output "azure_keys_germanywestcentral" {
+  value = data.azurerm_key_vault_key.thes_key_germanywestcentral
+}
+
+output "azure_keys_westeurope" {
+  value = data.azurerm_key_vault_key.thes_key_westeurope
+}
